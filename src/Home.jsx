@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { createTodo, deleteTodo } from "./todoReducer"
+import { createTodo, deleteTodo } from "./TodoReducer"
 
 function Home() {
     const todos = useSelector((state) => state.todos)
