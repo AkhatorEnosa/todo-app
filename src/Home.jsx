@@ -2,6 +2,7 @@ import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { checkTodo, createTodo, deleteTodo } from "./TodoReducer"
 import { RiCheckboxBlankCircleLine, RiCheckboxCircleFill } from "react-icons/ri"
+import { TfiTrash } from "react-icons/tfi"
 
 function Home() {
     const todos = useSelector((state) => state.todos)
@@ -62,7 +63,7 @@ function Home() {
                         {!todo.done ? <RiCheckboxBlankCircleLine className="text-2xl"/> : <RiCheckboxCircleFill  className="text-2xl opacity-50"/>} 
                         <span className={todo.done ? "line-through opacity-50" : "opacity-100"}>{todo.todoItem}</span>
                     </div>
-                    <button className="btn btn-error text-white" onClick={() => handleDelete(todo.id)}>Delete</button>
+                    <TfiTrash onClick={() => handleDelete(todo.id)} title="Delete" className="text-2xl text-red-600"/>
                 </div>
                 ))}
             </div> : <p className="mt-20 text-black/50 pb-20">No todos yet</p>}
