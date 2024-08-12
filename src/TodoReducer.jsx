@@ -15,6 +15,14 @@ export const todoSlice = createSlice({
             const done = state.map(todo => todo.id === id ? {...todo, done: !todo.done } : {...todo, done: todo.done })
             return done
         },
+        updateTodo: (state, action) => {
+            const {id, todoItem} = action.payload
+            const findTodo = state.find(todo => todo.id == id)
+
+            if(findTodo) {
+                findTodo.todoItem = todoItem
+            }
+        },
         deleteTodo: (state, action) => {
             const {id} = action.payload
             const findTodo = state.find(todo => todo.id == id)
@@ -28,5 +36,5 @@ export const todoSlice = createSlice({
     }
 })
 
-export const { createTodo, deleteTodo, checkTodo } = todoSlice.actions
+export const { createTodo, deleteTodo, checkTodo, updateTodo } = todoSlice.actions
 export default todoSlice.reducer
